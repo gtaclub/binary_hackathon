@@ -1,0 +1,86 @@
+.chatPanel
+  position: relative
+  height: 80vh
+
+  .chatContent
+    height: calc(100% - 100px)
+    overflow-y: auto
+    overflow-x: hidden
+
+  .align-center
+    margin: 0 auto
+    display: block
+
+  .left
+    position: relative
+    text-align: left
+    color: white
+
+    .carett
+      position: absolute
+      top: 0
+      left: 8px
+      margin: auto
+      color: #18C29C
+
+    .bubble
+      border-radius: 10px
+      background: #18C29C
+      padding: 10px 10px 10px 10px
+
+    .under-bubble
+      color: grey
+      font-size: 12px
+      margin: 0
+      padding: 0
+
+
+  .right
+    position: relative
+    text-align: right
+    color: white
+
+    .carett
+      position: absolute
+      top: 0
+      right: 8px
+      margin: auto
+      color: #0B877D
+      transform: rotate(180deg)
+
+    .bubble
+      border-radius: 10px
+      background: #0B877D
+      padding: 10px 10px 10px 10px
+
+    .under-bubble
+      color: grey
+      font-size: 12px
+      margin: 0
+      padding: 0
+
+
+  .avatar
+    border-radius: 50%
+    border-color: grey
+    border-width: 2px
+    object-fit: cover
+    height: 40px
+    width: 40px
+
+  .chatText
+    position: absolute
+    height: 60px
+    bottom: 5px
+    left: 0
+    right: 0
+    margin: auto
+
+    .chat-bar
+      width: 95%
+      position: absolute
+      top: 0
+      right: 0
+      left: 0
+      bottom: 0
+      margin: auto
