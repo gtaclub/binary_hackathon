@@ -30,17 +30,21 @@ class ChatController extends Controller
                 $amount = $response['result']['parameters']['amount'];
                 $currencyFrom = $response['result']['parameters']['currency-from'];
                 $currencyTo = $response['result']['parameters']['currency-to'];
-                $res = $gC->request('GET', 'http://api.fixer.io/latest?base='.$currencyFrom.'&symbols='.$currencyTo);
-                $currencyRate = json_decode((string) $res->getBody(), true);
+                try{
+                    $res = $gC->request('GET', 'http://api.fixer.io/latest?base='.$currencyFrom.'&symbols='.$currencyTo);
+                    $currencyRate = json_decode((string) $res->getBody(), true);
+                    $calc = $amount * $currencyRate['rates'][$currencyTo];
+                    $replied = "The conversion from " .$currencyFrom . " to " .$currencyTo. " would be " . $currencyTo . $calc . ".";
+                }catch(\Exception $error){
+                    $replied = "Something went wrong ! This issue will be reported to the technical team.";
+                }
 
-                $calc = $amount * $currencyRate['rates'][$currencyTo];
-                $replied = "The conversion from " .$currencyFrom . " to " .$currencyTo. " would be " . $currencyTo . $calc . ".";
             }else{
                 $replied = $response['result']['fulfillment']['messages'][0]['speech'];
             }
 
         } catch (\Exception $error) {
-            echo $error->getMessage();
+            $replied = "Something went wrong ! This issue will be reported to the technical team.";
         }
 
         $redis = Redis::connection();

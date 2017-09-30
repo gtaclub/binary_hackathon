@@ -1801,7 +1801,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         var self = this;
         socket.on('homepage', function (data) {
-            console.log("message received");
             self.items.push({ 'message': data.replied, 'type': 'left' });
             self.loading = false;
         });

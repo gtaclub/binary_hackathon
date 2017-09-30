@@ -108,7 +108,6 @@
         mounted() {
             var self = this
             socket.on('homepage', function (data) {
-                console.log("message received")
                 self.items.push({'message': data.replied, 'type': 'left'})
                 self.loading = false
             })
