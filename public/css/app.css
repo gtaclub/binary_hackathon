@@ -8432,6 +8432,12 @@ button.close {
   width: 40px;
 }
 
+@media (max-width: 991px) {
+  .chatPanel .avatar {
+    display: none;
+  }
+}
+
 .chatPanel .chatText {
   position: absolute;
   height: 60px;
